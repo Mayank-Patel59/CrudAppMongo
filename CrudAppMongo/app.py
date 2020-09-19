@@ -28,7 +28,7 @@ def add_user():
     if name and email and email and request.method == 'POST':
         print(request.method)
         hashed_password = generate_password_hash(pwd)
-        mongo.CrudRepo.Test.insert({'name': name, 'email': email, 'pwd': hashed_password, "role": role_id})
+        mongo.CrudRepo.Test.insert({'name': name, 'email': email, 'pwd': hashed_password, "role": role_id})          # DatabaseName.Collection_Name.Operation
         response = jsonify('user added successfully')
         response.status_code = 200
 
@@ -45,7 +45,7 @@ def add_roles():
     role = data['role']
     if role and request.method == 'POST':
         print(request.method)
-        mongo.CrudRepo.TestRel.insert({'_id': role_id, 'role': role})
+        mongo.CrudRepo.TestRel.insert({'_id': role_id, 'role': role})        
         response = jsonify('user added successfully')
         response.status_code = 200
 
@@ -65,7 +65,7 @@ def users():
 # Fetch Roles of Users From Mongodb
 @app.route('/roles')
 def roles():
-    roles = mongo.CrudRepo.TestRel.find()
+    roles = mongo.CrudRepo.TestRel.find()           
     response = dumps(roles)
     return response
 
@@ -73,7 +73,7 @@ def roles():
 # Search User Details by ID From Mongodb
 @app.route('/user/<id>')
 def user(id):
-    user = mongo.CrudRepo.Test.find_one({"_id": ObjectId(id)})
+    user = mongo.CrudRepo.Test.find_one({"_id": ObjectId(id)})          
     response = dumps(user)
     return response
 
@@ -81,7 +81,7 @@ def user(id):
 # Fetch Data of User Using Role
 @app.route('/userRoledata/<id>')
 def user_role_data(id):
-    user_role_data = mongo.CrudRepo.Test.aggregate([{"$lookup": {"from": "TestRel", "localField": "role", "foreignField": "_id", "as": "TestRel"}}])
+    user_role_data = mongo.CrudRepo.Test.aggregate([{"$lookup": {"from": "TestRel", "localField": "role", "foreignField": "_id", "as": "TestRel"}}])       
     response = dumps(user_role_data)
     return response
 
@@ -153,6 +153,8 @@ def not_found(error=None):
     return response
 
 
-# main Function of Program 
+
+"""Main Function,
+    Port and host details set here"""
 if __name__ == '__main__':
-    app.run(debug=True, host='127.0.0.1', port=5000)            # Link & Port Defined Here
+    app.run(debug=True, host='127.0.0.1', port=5000)        
