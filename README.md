@@ -6,7 +6,7 @@ The python-MongoDB connector is PyMongo.
 
 ### Installation
 
-First, you should [Install All library from requirements.txt] and [Add JSON Viewer Chrome Extension for Best View of JSON Data on Browser](https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh)
+First, you should ###Install All library from requirements.txt
 
 
 ### Usage
