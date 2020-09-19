@@ -1,16 +1,23 @@
+"""
+Created on Saturday Sep 12 00:06:08 2020
+
+@author: Mayank patel
+"""
+
 import json
 
 from bson import ObjectId
 from bson.json_util import dumps
-from pymongo import MongoClient
+from pymongo import MongoClient                                 # Pymongo API of Mongodb 
 from flask import Flask, request, jsonify
 from werkzeug.security import generate_password_hash
 
 app = Flask(__name__)
 
-mongo = MongoClient("mongodb://localhost:27017/CrudRepo")
+mongo = MongoClient("mongodb://localhost:27017/CrudRepo")        # MongoDb Connection / Database Name
 
 
+# Add User Data To Mongodb
 @app.route('/adduser', methods=['POST'])
 def add_user():
     data = request.json
@@ -30,6 +37,7 @@ def add_user():
         return not_found()
 
 
+# Add role for User To Mongodb
 @app.route('/addrole', methods=['POST'])
 def add_roles():
     data = request.json
@@ -46,6 +54,7 @@ def add_roles():
         return not_found()
 
 
+# Fetch User Details From Mongodb
 @app.route('/users')
 def users():
     users = mongo.CrudRepo.Test.find()
@@ -53,6 +62,7 @@ def users():
     return response
 
 
+# Fetch Roles of Users From Mongodb
 @app.route('/roles')
 def roles():
     roles = mongo.CrudRepo.TestRel.find()
@@ -60,6 +70,7 @@ def roles():
     return response
 
 
+# Search User Details by ID From Mongodb
 @app.route('/user/<id>')
 def user(id):
     user = mongo.CrudRepo.Test.find_one({"_id": ObjectId(id)})
@@ -67,6 +78,7 @@ def user(id):
     return response
 
 
+# Fetch Data of User Using Role
 @app.route('/userRoledata/<id>')
 def user_role_data(id):
     user_role_data = mongo.CrudRepo.Test.aggregate([{"$lookup": {"from": "TestRel", "localField": "role", "foreignField": "_id", "as": "TestRel"}}])
@@ -74,6 +86,7 @@ def user_role_data(id):
     return response
 
 
+# Fetch User Details By Id
 @app.route('/role/<id>')
 def role(id):
     role = mongo.CrudRepo.Test.find_one({"_id": ObjectId(id)})
@@ -81,6 +94,7 @@ def role(id):
     return response
 
 
+# Delete User From Mongodb
 @app.route('/deleteuser/<id>', methods=['DELETE'])
 def delete_user(id):
     mongo.CrudRepo.Test.delete_one({"_id": ObjectId(id)})
@@ -89,6 +103,7 @@ def delete_user(id):
     return response
 
 
+# Delete Role of user From Mongodb
 @app.route('/deleterole/<id>', methods=['DELETE'])
 def delete_role(id):
     mongo.CrudRepo.TestRel.delete_one({"_id": ObjectId(id)})
@@ -97,6 +112,7 @@ def delete_role(id):
     return response
 
 
+# Update User From Mongodb
 @app.route('/updateuser/<id>', methods=['PUT'])
 def update_user(id):
     _id = id
@@ -112,6 +128,7 @@ def update_user(id):
         return resp
 
 
+# Update Role of User
 @app.route('/updaterole/<id>', methods=["PUT"])
 def update_role(id):
     _id = id
@@ -125,6 +142,7 @@ def update_role(id):
         return resp
 
 
+# Exception Handling 
 @app.errorhandler(404)
 def not_found(error=None):
     message = {'status': 404, 'message':"Not Found"+request.url}
@@ -135,5 +153,6 @@ def not_found(error=None):
     return response
 
 
+# main Function of Program 
 if __name__ == '__main__':
-    app.run(debug=True, host='127.0.0.1', port=5000)
+    app.run(debug=True, host='127.0.0.1', port=5000)            # Link & Port Defined Here
