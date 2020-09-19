@@ -6,7 +6,9 @@ The python-MongoDB connector is PyMongo.
 
 ### Installation
 
-First, you should ###Install All library from requirements.txt
+First, you should 
+  -Install All library from requirements.txt
+  -For Data Operations Install [POSTMAN](https://www.postman.com/downloads/)
 
 
 ### Usage
