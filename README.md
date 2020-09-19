@@ -9,10 +9,10 @@ The python-MongoDB connector is PyMongo.
 First you should install following Library and Softwares:
 
 ```
-requirement.txt
+Install requirement.txt
 ```
 
-then you have to install [POSTMAN API](https://www.postman.com/downloads/) for doing Operation on DB
+then you have to install [POSTMAN API](https://www.postman.com/downloads/) for doing Operation on DB.
 
 ### Usage
 
@@ -28,5 +28,5 @@ then, run the program:
 $ python app.py
 ```
 
-Open your browser and go to `http://127.0.0.1:5000/` to see the running program.
+Open your browser and go to `http://127.0.0.1:5000/route_Name` to see the running program.
 
