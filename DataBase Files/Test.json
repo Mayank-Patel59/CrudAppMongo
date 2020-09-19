@@ -1,0 +1,24 @@
+[{
+  "_id": {
+    "$oid": "5e8c3b352f01f046e914a9be"
+  },
+  "name": "akshay",
+  "email": "a@gmail.com",
+  "pwd": "pbkdf2:sha256:150000$nX7bSoK2$5faac7b687d1bb5822e36fbd36b7c2f5ec9bc71e0d4079add84390ec0caa0188",
+  "role": 1
+},{
+  "_id": {
+    "$oid": "5e8c44522f15ee1235a11fc9"
+  },
+  "name": "bhavik",
+  "email": "bhavik@gmail.com",
+  "pwd": "pbkdf2:sha256:150000$DWD4AQN2$48bdbf8ad3350d2e3f7d861bcdfa527ccd826a3bdd21567dd3d6eb80b19bdb68",
+  "role": 1
+},{
+  "_id": {
+    "$oid": "5f65d967543f8b553c758d91"
+  },
+  "name": "mayank",
+  "email": "mayank@gmail.com",
+  "role": 1
+}]
