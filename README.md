@@ -1,6 +1,6 @@
 # CrudAppMongo
 
-This is a simple example of Python Flask's usage as a simple **"Task Manager".
+This is a simple example of Python Flask's usage as a simple **"Task Manager".**
 The Database Management System is MongoDB. 
 The python-MongoDB connector is PyMongo.
 
